@@ -1,0 +1,440 @@
+@import _vars
+@import _responsive
+*,
+*::after,
+*::before
+    padding: 0
+    margin: 0
+    box-sizing: border-box
+    transition: .5s all 
+html, 
+body
+    height: 100%
+    scroll-behavior: smooth
+body
+    @extend %default-font
+    background-color: $white
+    font-display: fallback
+.wrapper
+    position: relative
+    display: flex
+    flex-direction: column
+    min-height: 100%
+.main
+    flex: 1 0 auto
+.footer
+    flex: 0 0 auto
+.container
+    max-width: 1400px
+    margin: 0 auto
+    padding: 0 100px
+    @include media("<1420px")
+        padding: 0 75px
+    @include media("<1024px")
+        padding: 0 56px
+    @include media("<=phone")
+        padding: 0 34px
+li
+    list-style: none
+a
+    text-decoration: none
+    color: inherit
+    &:hover
+        cursor: pointer
+h1
+    @extend %title-font
+    color: $dark-blue
+    font-size: 64px
+    line-height: 84px
+    text-align: center
+    margin-top: 12px
+    margin-bottom: 28px
+    @include media("<tablet")
+        font-size: 56px
+        line-height: 72px
+    @include media("<phone")
+        font-size: 42px
+        line-height: 56px
+h2
+    @extend %title-font
+    font-size: 48px
+    line-height: 72px
+    margin-top: 12px
+    @include media("<desktop")
+        font-size: 42px
+    @include media("<1024px", ">=tablet")
+        font-size: 34px
+        line-height: 52px
+    @include media("<phone")
+        font-size: 30px
+        line-height: 46px
+h4
+    @extend %default-font
+    text-align: center
+    margin-top: calc(30px + $header-sticky-top)
+    @include media("<phone")
+        margin-top: 20px
+h6
+    font-weight: 700
+    font-size: 20px
+    color: $black
+.btn
+    padding: 16px 56px
+    border: 2px solid $dark-blue
+    color: $dark-blue
+    border-radius: 56px
+    line-height: 28px
+    font-size: 28px
+    font-weight: 700
+    background-color: $white
+    &:hover
+        background-color: $dark-blue
+        color: $white
+        cursor: pointer
+.divider
+    border-color: $dark-blue 
+.visually-hidden
+    display: block
+    visibility: hidden
+    width: 0
+    height: 0 
+.shadow
+    box-shadow: 0px 0 12px rgb(148 148 148 / 57%)
+
+
+
+.header
+    position: sticky
+    position: -webkit-sticky
+    position: -moz-sticky
+    position: -o-sticky
+    position: -ms-sticky
+    top: - ($header-sticky-top)
+    background-color: $white
+    z-index: 2
+    &__inner 
+        padding: 56px 0
+        padding-bottom: calc(56px - $header-sticky-top)
+        display: flex
+        justify-content: space-between
+        align-items: center
+.logo
+    width: 163px
+    svg 
+        width: 163px 
+        height: 42px
+        path
+            fill: $dark-blue
+    &:hover
+        svg path
+            fill: $green    
+.menu
+    &__list
+        display: flex
+        align-items: center
+    &__list--link
+        color: $dark-blue
+        font-size: 16px
+        font-weight: 600
+        line-height: 28px
+        &:hover
+            color: $green       
+.menu__list--item 
+    margin-left: 40px
+    &:last-child
+        .menu__list--link
+            padding: 8px 40px
+            border: 2px solid $dark-blue
+            border-radius: 24px
+            line-height: 24px
+            &:hover
+                color: $white
+.top__article-item
+    display: flex
+    align-items: center
+    flex-wrap: wrap
+    gap: 100px
+    padding: 40px 0 72px
+    &--img,
+    &--text
+        flex: 1 1
+        width: 50%
+        @include media("<tablet")
+            width: 100%
+    &--img img
+        width: 100%
+    .article-item__info
+        margin-top: -50px
+    @include media("<desktop", ">=tablet")
+        gap: 40px
+    @include media("<1024px", ">=tablet")
+        &--img
+            flex: 2
+        &--text
+            flex: 3
+    @include media("<tablet")
+        flex-direction: column
+        align-items: flex-start
+        gap: 60px
+.news__inner
+    padding: 96px 100px
+    @include media("<desktop")
+        padding: 96px 0
+    @include media("<tablet")
+        padding: 72px 0
+
+.news__articles
+    display: flex
+    row-gap: 80px
+    column-gap: 50px
+    flex-wrap: wrap
+    padding-top: 40px
+    align-items: stretch
+    align-content: stretch
+    .article-item__author
+        position: absolute
+        bottom: 0
+        height: 32px
+.article-item
+    position: relative
+    width: 300px
+    display: none
+    flex-direction: column
+    padding-bottom: 52px
+    transition: none
+    @include media("<1420px")
+        width: calc(33% - 31px)
+    @include media('<desktop')
+        width: calc(50% - 25px)
+    &__image
+        width: 100%
+        border-radius: 24px // заменить картинки или удалить это свойство
+    &__info
+        padding-top: 24px
+    &__title
+        margin-top: 12px
+    &__author
+        display: flex
+        gap: 12px
+        margin-top: 20px
+        &--photo
+            width: 32px
+            height: 32px
+        &--name
+            @extend %small-font
+            color: $black
+            line-height: 32px
+        &:hover
+            text-decoration: underline
+.article-item__info--category
+    @extend %small-font
+    font-weight: 700
+    color: $dark-blue
+    &::after
+        content: "\00a0"
+    &:hover
+        text-decoration: underline
+.article-item__info--date
+    @extend %small-font
+
+.btn#load
+    margin: 96px auto 28px
+    display: block
+    @include media("<tablet")
+        margin: 56px auto 28px
+.cta
+    padding-top: 135px
+    margin-top: -135px
+.cta__inner
+    background: url(../assets/images/banner.svg) center no-repeat
+    background-size: cover
+    border-radius: 12px
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    margin-bottom: 84px
+    &--content
+        max-width: 716px
+        margin: 72px auto 74px
+        display: flex
+        flex-direction: column
+        align-items: center
+        @include media("<tablet")
+            margin: 52px 40px 54px
+    h2
+        color: $white
+        text-align: center
+.cta-form
+    margin-top: 48px
+    display: flex
+    @include media("<tablet")
+        flex-direction: column
+        gap: 20px
+        align-items: center
+        margin-top: 28px
+input[name="email"]
+    height: 60px    
+    width: 370px 
+    padding: 12px 32px
+    margin-right: 24px
+    border-radius: 240px
+    border: 2px solid $white
+    background-color: $white
+    outline: 0
+    @extend %default-font
+    &::placeholder
+        color: $black
+        transition: .5s all ease
+    &:focus
+        border-color: $green
+        &::placeholder
+            visibility: hidden
+            opacity: 0
+    @include media("<tablet")
+        margin-right: 0
+.cta-btn
+    font-size: 20px
+    font-weight: 700
+    background-color: $green
+    border: 2px solid $green         
+    &:hover
+        color: $green    
+    @include media("<tablet")
+        max-width: 210px  
+.footer
+    &__inner
+        padding: 100px 0 0
+        display: flex
+        gap: 179px
+        @include media("<1420px")
+            gap: 100px
+        @include media("<1024px")
+            gap: 60px
+            flex-direction: column
+    &__info  
+        &--description
+            width: 300px
+            @extend %small-font
+            padding-top: 40px
+            @include media("<1024px")
+                max-width: 500px
+                width: auto
+    &__menu
+        display: flex
+        gap: 96px
+    &__menu--list
+        width: 172px
+        @include media("<desktop", ">=1024px")
+            width: auto
+    &__menu--item:not(:first-child)
+        padding-top: 32px
+    &__menu--link
+        color: $gray
+        &:hover
+            color: $dark-blue
+    .hiring::after
+        content: "Hiring!"
+        position: absolute
+        display: inline-block
+        @extend %small-font
+        font-size: 13px
+        font-weight: 700
+        background-color: $green
+        color: $dark-blue
+        padding: 1px 14px
+        border-radius: 100px
+        margin-left: 14px
+        margin-top: 2px
+        @include media("<desktop", ">=1024px")
+            font-size: 12px
+            padding: 1px 10px
+            margin-left: 10px         
+.footer__info--copy
+    @extend %small-font
+    padding-bottom: 100px
+    @include media("<1024px")
+        padding-bottom: 60px
+        padding-top: 60px
+
+@include media(">tablet")
+    .nav-icon
+        display: none     
+@include media("<=tablet")
+    @import _nav-icon
+    .header
+        top: 0
+        &__inner
+            padding-top: $header-sticky-top
+    .menu
+        display: none
+        position: fixed
+        width: 100vw
+        height: calc(100vh - 95px)
+        top: 95px
+        left: 0
+        background-color: $green
+        padding: 20px 0 36px
+        overflow: hidden
+        &__list
+            flex-direction: column
+        &__list--item
+            margin-left: 0
+            &:last-child .menu__list--link
+                font-size: 1.6rem
+                line-height: 100%
+                background-color: $dark-blue
+                border-radius: 50px
+                margin-top: 60px
+                padding: 18px 40px
+        &__list--link
+            display: block
+            padding: 30px
+            font-size: 3rem
+            line-height: 120%
+            color: white
+            &:hover
+                color: $dark-blue
+    .footer
+        &__inner
+            padding: 60px 0 0
+        &__menu
+            gap: 30px
+        &__menu--link
+            font-size: 16px
+        &__menu--item:not(:first-child)
+            padding-top: 20px
+        .hiring::after
+            font-size: 12px
+            padding: 1px 10px
+            margin-left: 10px
+    .btn
+        font-size: 20px
+    .overflow-hidden
+        overflow: hidden
+@include media("<=phone")
+    .logo svg 
+        width: 120px 
+        height: auto
+    .news__inner
+        padding: 60px 20px
+    .top__article-item
+        padding: 0px 0 48px
+    .article-item
+        width: 100%
+    .cta__inner--content
+        margin: 20px 20px 50px
+    input[name="email"]
+        width: 270px
+    .btn
+        padding: 11px 20px
+    .footer
+        &__menu
+         flex-wrap: wrap
+        &__menu--list
+            width: 130px
+        &__menu--item:not(:first-child)
+            padding-top: 6px
+        &__info--copy
+            padding: 34px
+            font-size: 14px
