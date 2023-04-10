@@ -5,7 +5,7 @@ h2, h1 {
   color: #000;
 }
 
-input[name=email], h4, body {
+input[name=email], h4, h3, body {
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
   font-size: 20px;
