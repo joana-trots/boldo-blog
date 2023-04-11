@@ -27,6 +27,7 @@ $(document).ready(function ($) {
             $(".nav-icon").removeClass("nav-icon--open");
             $(".logo").click(function(){
                 $(".menu").hide();
+                $("body").removeClass('overflow-hidden');
                 $(".nav-icon").removeClass("nav-icon--open");
             });
         } else {
