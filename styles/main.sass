@@ -1,11 +1,9 @@
 @import _vars
 @import _responsive
+@import _reset
 *,
 *::after,
 *::before
-    padding: 0
-    margin: 0
-    box-sizing: border-box
     transition: .5s all 
 html, 
 body
@@ -14,7 +12,6 @@ body
 body
     @extend %default-font
     background-color: $white
-    font-display: fallback
 .wrapper
     position: relative
     display: flex
@@ -34,13 +31,7 @@ body
         padding: 0 56px
     @include media("<=phone")
         padding: 0 34px
-li
-    list-style: none
-a
-    text-decoration: none
-    color: inherit
-    &:hover
-        cursor: pointer
+
 h1
     @extend %title-font
     color: $dark-blue
@@ -358,6 +349,84 @@ input[name="email"]
     @include media("<1024px")
         padding-bottom: 60px
         padding-top: 60px
+
+/* CARDS */
+.cards
+    background-color: #f5f5f5
+    min-height: 100vh
+    &__inner
+        display: flex
+        flex-wrap: wrap
+        gap: 32px
+        justify-content: center
+    h1
+        margin: 0
+        padding: 40px
+.card
+    position: relative
+    flex: 1 1
+    display: flex
+    flex-direction: column
+    @extend %default-font-card
+    text-align: right
+    padding: 30px 20px 72px 
+    width: auto
+    max-width: 280px
+    min-width: 240px
+    box-shadow: 0px 6px 16px 0px #cacaca91
+    border-radius: 14px
+    cursor: pointer
+    &__level-1
+        background-color: $card-green
+        color: $white
+        ul li::after
+            content: url(../assets/icons/checkmark-white.svg)
+            margin-left: 14px
+        h2
+            color: $white
+        .star
+            background-color: #3333334c
+        .star svg path
+            stroke: $white
+    &__level-2
+        background-color: $white
+        color: $card-grey
+        h2
+            color: $card-grey
+        .star
+            background-color: transparent
+        .star svg path
+            stroke: $blue
+        ul li::after
+            content: url(../assets/icons/circle-grey.svg)
+            margin-left: 14px
+    &__title
+        display: flex
+        align-items: center
+        justify-content: space-between
+    .star
+        border-radius: 100%
+        width: 54px
+        height: 54px
+        display: flex
+        align-items: center
+        justify-content: center
+    h2
+        @extend %title-font-card
+        margin-top: 0
+        line-height: normal
+    .subtitle
+        font-weight: 600
+        font-size: 22px
+        line-height: 46px
+    .small-text
+        @extend %small-font-card
+        margin-top: 20px
+        position: absolute
+        bottom: 30px
+        right: 20px
+        
+
 
 @include media(">tablet")
     .nav-icon
