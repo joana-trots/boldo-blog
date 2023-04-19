@@ -39,16 +39,11 @@ $(document).ready(function ($) {
     $(function(){
         $(".article-item").slice(0, 6).css("display", "flex").show();
         $("#load").click(function(e){ 
-            e.preventDefault();               
+            e.preventDefault();     
+            $(".article-item").slice(6, 13).fadeOut(500);          
             $(this).text($(this).text() == 'Show less' ? 'Load More' : 'Show less');
-            if($("div:hidden").length != 0){ 
-                $(".article-item:hidden").slice(0, 6).fadeIn(1200);
-            } 
-            else $(".article-item").slice(6, 13).fadeOut(500);
+            $(".article-item:hidden").slice(0, 6).fadeIn(1200);
+          
         });
     });
 });
-
-
-//email
-
