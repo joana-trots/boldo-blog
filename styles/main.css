@@ -260,6 +260,7 @@ h6 {
   border: 2px solid #0A2640;
   border-radius: 24px;
   line-height: 24px;
+  font-weight: 700;
 }
 .menu__list--item:last-child .menu__list--link:hover {
   color: #fff;
@@ -373,6 +374,7 @@ h6 {
 .article-item__author--photo {
   width: 32px;
   height: 32px;
+  border-radius: 100%;
 }
 .article-item__author--name {
   color: #000;
